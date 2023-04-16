@@ -77,10 +77,7 @@ public class ProbabilitierBuilder<T> {
 		probabilities.stream().map(d -> {
 			return (long) (d * finalMultiplier);
 		}).forEach(i -> {
-			Long[] range = new Long[2];
-			range[0] = conter.get();
-			range[1] = conter.addAndGet(i);
-			ranges.add(range);
+			ranges.add(new Long[] { conter.get(), conter.addAndGet(i) });
 		});
 
 		return new Probabilitier<T>(random, conter.get(), ranges, objs);
